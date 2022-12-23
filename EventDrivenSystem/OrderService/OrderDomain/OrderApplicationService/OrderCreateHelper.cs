@@ -8,16 +8,16 @@ using Rosered11.OrderService.Exception;
 
 namespace Rosered11.OrderService.Domain
 {
-    public class OrderCreateCommandHandler
+    public class OrderCreateHelper
     {
-        private readonly ILogger<OrderCreateCommandHandler> _logger;
+        private readonly ILogger<OrderCreateHelper> _logger;
         private readonly OrderDomainService _orderDomainService;
         private readonly OrderRepository _orderRepository;
         private readonly CustomerRepository _customerRepository;
         private readonly RestaurantRepository _restaurantRepository;
         private readonly OrderDataMapper _orderDataMapper;
 
-        public OrderCreateCommandHandler(ILogger<OrderCreateCommandHandler> logger, OrderDomainService orderDomainService, OrderRepository orderRepository, CustomerRepository customerRepository, RestaurantRepository restaurantRepository, OrderDataMapper orderDataMapper)
+        public OrderCreateHelper(ILogger<OrderCreateHelper> logger, OrderDomainService orderDomainService, OrderRepository orderRepository, CustomerRepository customerRepository, RestaurantRepository restaurantRepository, OrderDataMapper orderDataMapper)
         {
             _logger = logger;
             _orderDomainService = orderDomainService;
@@ -27,15 +27,15 @@ namespace Rosered11.OrderService.Domain
             _orderDataMapper = orderDataMapper;
         }
 
-        public CreateOrderResponse CreateOrder(CreateOrderCommand createOrderCommand)
+        public OrderCreatedEvent PersistOrder(CreateOrderCommand createOrderCommand)
         {
             CheckCustomer(createOrderCommand.CustomerId);
             Restaurant restaurant = CheckRestaurant(createOrderCommand);
             Order order = _orderDataMapper.CreateOrderCommandToOrder(createOrderCommand);
             OrderCreatedEvent orderCreateEvent = _orderDomainService.ValidateAndInitiateOrder(order, restaurant);
-            Order orderResult = SaveOrder(order);
-            _logger.LogInformation("Order is created with id: {id}", orderResult.Id.GetValue());
-            return _orderDataMapper.OrderToCreateOrderResponse(orderResult);
+            SaveOrder(order);
+            _logger.LogInformation("Order is created with id: {Id}", orderCreateEvent.Order.Id.GetValue());
+            return orderCreateEvent;
         }
 
         private Restaurant CheckRestaurant(CreateOrderCommand createOrderCommand)

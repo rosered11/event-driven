@@ -2,7 +2,7 @@ using Rosered11.OrderService.Domain.DTO.Create;
 using Rosered11.OrderService.Domain.DTO.Track;
 using Rosered11.OrderService.Domain.Ports.Input.Service;
 
-namespace Rosered11.OrderService.Domain.Ports
+namespace Rosered11.OrderService.Domain
 {
     public class OrderApplicationService : IOrderApplicationService
     {
