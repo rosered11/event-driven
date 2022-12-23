@@ -1,6 +1,6 @@
 using Rosered11.OrderService.Common.Exception;
 
-namespace Rosered11.OrderService.Order.Exception
+namespace Rosered11.OrderService.Exception
 {
     public class OrderDomainException : DomainException
     {

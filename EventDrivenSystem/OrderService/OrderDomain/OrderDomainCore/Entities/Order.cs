@@ -1,7 +1,7 @@
 using Common.CommonDomain.Entities;
 using Common.CommonDomain.ValueObject;
 using Rosered11.OrderService.Domain.ValueObject;
-using Rosered11.OrderService.Order.Exception;
+using Rosered11.OrderService.Exception;
 
 namespace Rosered11.OrderService.Domain.Entities
 {

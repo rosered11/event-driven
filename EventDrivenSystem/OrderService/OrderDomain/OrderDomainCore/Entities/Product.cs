@@ -5,9 +5,13 @@ namespace Rosered11.OrderService.Domain.Entities
 {
     public class Product : BaseEntity<ProductId>
     {
-        private string name;
-        private Money price;
+        private string? name;
+        private Money? price;
 
+        public Product(ProductId productId)
+        {
+            base.Id = productId;
+        }
         public Product(ProductId productId, string name, Money price)
         {
             base.Id = productId;
@@ -21,7 +25,7 @@ namespace Rosered11.OrderService.Domain.Entities
             this.price = price;
         }
 
-        public string GetName() => this.name;
-        public Money GetPrice() => this.price;
+        public string? GetName() => this.name;
+        public Money? GetPrice() => this.price;
     }
 }

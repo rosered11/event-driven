@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Rosered11.OrderService.Domain.Entities;
 using Rosered11.OrderService.Domain.Event;
-using Rosered11.OrderService.Order.Exception;
+using Rosered11.OrderService.Exception;
 
 namespace Rosered11.OrderService.Domain
 {
