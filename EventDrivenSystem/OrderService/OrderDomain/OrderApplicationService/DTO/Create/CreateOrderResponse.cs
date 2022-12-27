@@ -14,6 +14,13 @@ namespace Rosered11.OrderService.Domain.DTO.Create
             _orderStatus = builder.OrderStatus;
             _message = builder.Message;
         }
+
+        public Guid OrderTrackingId => _orderTrackingId;
+
+        public OrderStatus OrderStatus => _orderStatus;
+
+        public string Message => _message;
+
         public static Builder NewBuilder()
         {
             return new Builder();
@@ -36,7 +43,7 @@ namespace Rosered11.OrderService.Domain.DTO.Create
             }
             public Builder SetMessage(string message)
             {
-                Message = Message;
+                Message = message;
                 return this;
             }
             public CreateOrderResponse Build() => new(this);

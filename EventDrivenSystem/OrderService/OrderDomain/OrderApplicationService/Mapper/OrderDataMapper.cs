@@ -1,5 +1,6 @@
 using Common.CommonDomain.ValueObject;
 using Rosered11.OrderService.Domain.DTO.Create;
+using Rosered11.OrderService.Domain.DTO.Track;
 using Rosered11.OrderService.Domain.Entities;
 using Rosered11.OrderService.Domain.ValueObject;
 
@@ -26,15 +27,25 @@ namespace Rosered11.OrderService.Domain.Mapper
                 .Build();
         }
 
-        public CreateOrderResponse OrderToCreateOrderResponse(Order order)
+        public CreateOrderResponse OrderToCreateOrderResponse(Order order, string message)
         {
             return CreateOrderResponse.NewBuilder()
                     .SetOrderTrackingId(order.TrackingId.GetValue())
                     .SetOrderStatus(order.OrderStatus)
+                    .SetMessage(message)
                     .Build();
         }
 
-        private IEnumerable<Entities.OrderItem> OrderItemsToOrderItemEntities(
+        public TrackOrderResponse OrderToTrackOrderResponse(Order order)
+        {
+            return TrackOrderResponse.NewBuilder()
+                    .SetOrderTrackingId(order.TrackingId.GetValue())
+                    .SetOrderStatus(order.OrderStatus)
+                    .SetFailureMessage(order.FailureMessage)
+                    .Build();
+        }
+
+        private List<Entities.OrderItem> OrderItemsToOrderItemEntities(
             List<DTO.Create.OrderItem> orderItems)
         {
             return orderItems.Select(x => 
@@ -43,7 +54,7 @@ namespace Rosered11.OrderService.Domain.Mapper
                     .SetPrice(new Money(x.Price))
                     .SetQuantity(x.Quantity)
                     .SetSubTotal(new (x.SubTotal))
-                    .Build());
+                    .Build()).ToList();
         }
 
         private StreetAddress OrderAddressToStreetAddress(OrderAddress orderAddress)

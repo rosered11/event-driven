@@ -15,12 +15,12 @@ namespace Rosered11.OrderService.Domain
         }
         public CreateOrderResponse CreateOrder(CreateOrderCommand createOrderCommand)
         {
-            throw new NotImplementedException();
+            return _orderCreateCommandHandler.CreateOrder(createOrderCommand);
         }
 
         public TrackOrderResponse TrackOrder(TrackOrderQuery trackOrderQuery)
         {
-            throw new NotImplementedException();
+            return _orderTrackCommandHandler.TrackOrder(trackOrderQuery);
         }
     }
 }

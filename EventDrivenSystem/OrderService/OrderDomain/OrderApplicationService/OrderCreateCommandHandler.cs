@@ -29,7 +29,7 @@ namespace Rosered11.OrderService.Domain
             OrderCreatedEvent orderCreatedEvent = _orderCreateHelper.PersistOrder(createOrderCommand);
             _logger.LogInformation("Order is created with id: {Id}", orderCreatedEvent.Order.Id.GetValue());
             _orderCreatedPaymentRequestMessagePublisher.Publish(orderCreatedEvent);
-            return _orderDataMapper.OrderToCreateOrderResponse(orderCreatedEvent.Order);
+            return _orderDataMapper.OrderToCreateOrderResponse(orderCreatedEvent.Order, "Order created successfully");
         }
     }
 }

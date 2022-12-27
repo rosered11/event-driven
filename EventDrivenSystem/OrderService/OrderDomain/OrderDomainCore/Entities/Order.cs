@@ -11,7 +11,7 @@ namespace Rosered11.OrderService.Domain.Entities
         private readonly RestaurantId? _restaurantId;
         private readonly StreetAddress? _deliveryAddress;
         private readonly Money? _price;
-        private readonly IEnumerable<OrderItem>? _items;
+        private readonly List<OrderItem>? _items;
         private TrackingId? _trackingId;
         private OrderStatus _orderStatus;
         private List<string>? _failureMessage;
@@ -138,7 +138,7 @@ namespace Rosered11.OrderService.Domain.Entities
 
         public Money? Price => _price;
 
-        public IEnumerable<OrderItem>? Items => _items;
+        public List<OrderItem>? Items => _items;
 
         public TrackingId? TrackingId { get => _trackingId; }
         public OrderStatus OrderStatus { get => _orderStatus; }
@@ -151,7 +151,7 @@ namespace Rosered11.OrderService.Domain.Entities
             public RestaurantId? RestaurantId { get; private set; }
             public StreetAddress? DeliveryAddress { get; private set; }
             public Money? Price { get; private set; }
-            public IEnumerable<OrderItem>? Items { get; private set; }
+            public List<OrderItem>? Items { get; private set; }
             public TrackingId? TrackingId { get; private set; }
             public OrderStatus OrderStatus { get; private set; }
             public List<string>? FailureMessage { get; private set; }
@@ -181,7 +181,7 @@ namespace Rosered11.OrderService.Domain.Entities
                 Price = price;
                 return this;
             }
-            public Builder SetItems(IEnumerable<OrderItem> items)
+            public Builder SetItems(List<OrderItem> items)
             {
                 Items = items;
                 return this;

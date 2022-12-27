@@ -19,7 +19,7 @@ namespace Rosered11.OrderService.Domain.Entities
             this.price = price;
         }
 
-        public void UpdateWithConfirmedNameAndPrice(string name, Money price)
+        public void UpdateWithConfirmedNameAndPrice(string? name, Money? price)
         {
             this.name = name;
             this.price = price;

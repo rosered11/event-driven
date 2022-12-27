@@ -1,0 +1,13 @@
+global using Xunit;
+global using Common.CommonDomain.ValueObject;
+global using Moq;
+global using Rosered11.OrderService.Domain.DTO.Create;
+global using Rosered11.OrderService.Domain.Entities;
+global using Rosered11.OrderService.Domain.Ports.Input.Service;
+global using Rosered11.OrderService.Exception;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Logging;
+global using Rosered11.OrderService.Domain.Mapper;
+global using Rosered11.OrderService.Domain.Ports.Output.Message.Publisher.Payment;
+global using Rosered11.OrderService.Domain.Ports.Output.Message.Publisher.RestaurantApproval;
+global using Rosered11.OrderService.Domain.Ports.Output.Repository;

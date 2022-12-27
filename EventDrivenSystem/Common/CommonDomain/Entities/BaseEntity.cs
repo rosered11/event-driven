@@ -32,7 +32,7 @@ namespace Common.CommonDomain.Entities
                     if (prop == null)
                         return false;
                     else
-                        return _id.Equals(prop.GetValue(obj));
+                        return _id.GetHashCode() == prop?.GetValue(obj)?.GetHashCode();
                 }
             }
         }
