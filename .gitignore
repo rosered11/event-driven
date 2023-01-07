@@ -475,3 +475,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+EventDrivenSystem/Infrastructure/docker-compose/volumes/*

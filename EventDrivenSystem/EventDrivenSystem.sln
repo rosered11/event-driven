@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderDomain", "OrderDomain"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderApplicationService.Test", "OrderService\OrderDomain\OrderApplicationService.Test\OrderApplicationService.Test.csproj", "{D6E1B619-63AA-4B29-AF53-838ED08A2ADB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{B9369EAB-CA2E-46AF-A780-ED245D0F0F15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kafka", "Infrastructure\Kafka\Kafka.csproj", "{4EED91EA-AAEB-4209-B5AA-9CA68CAA65C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,10 +32,15 @@ Global
 		{D6E1B619-63AA-4B29-AF53-838ED08A2ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6E1B619-63AA-4B29-AF53-838ED08A2ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6E1B619-63AA-4B29-AF53-838ED08A2ADB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EED91EA-AAEB-4209-B5AA-9CA68CAA65C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EED91EA-AAEB-4209-B5AA-9CA68CAA65C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EED91EA-AAEB-4209-B5AA-9CA68CAA65C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EED91EA-AAEB-4209-B5AA-9CA68CAA65C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E41F8BB2-5E60-4301-A557-134C42DC1660} = {8B0DBF87-A8BA-44F8-B768-423F29EE5B03}
 		{0DA5B456-EF25-457B-90CE-08B12B564B46} = {8B0DBF87-A8BA-44F8-B768-423F29EE5B03}
 		{D6E1B619-63AA-4B29-AF53-838ED08A2ADB} = {0DA5B456-EF25-457B-90CE-08B12B564B46}
+		{4EED91EA-AAEB-4209-B5AA-9CA68CAA65C9} = {B9369EAB-CA2E-46AF-A780-ED245D0F0F15}
 	EndGlobalSection
 EndGlobal

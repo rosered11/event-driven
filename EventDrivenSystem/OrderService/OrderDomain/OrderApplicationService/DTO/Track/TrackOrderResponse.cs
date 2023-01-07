@@ -14,6 +14,13 @@ namespace Rosered11.OrderService.Domain.DTO.Track
             _orderStatus = builder.OrderStatus;
             failureMessage = builder.FailureMessage;
         }
+
+        public Guid OrderTrackingId => _orderTrackingId;
+
+        public OrderStatus OrderStatus => _orderStatus;
+
+        public List<string> FailureMessage => failureMessage;
+
         public static Builder NewBuilder()
         {
             return new Builder();
