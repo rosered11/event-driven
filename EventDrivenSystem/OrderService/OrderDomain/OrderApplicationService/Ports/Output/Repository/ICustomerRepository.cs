@@ -2,8 +2,8 @@ using Rosered11.OrderService.Domain.Entities;
 
 namespace Rosered11.OrderService.Domain.Ports.Output.Repository
 {
-    public interface RestaurantRepository
+    public interface ICustomerRepository
     {
-        Restaurant FindRestaurantInformation(Restaurant restaurant);
+        public Customer FindCustomer(Guid customerId);
     }
 }

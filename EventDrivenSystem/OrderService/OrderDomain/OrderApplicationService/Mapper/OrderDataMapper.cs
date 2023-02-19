@@ -18,7 +18,7 @@ namespace Rosered11.OrderService.Domain.Mapper
 
         public Order CreateOrderCommandToOrder(CreateOrderCommand createOrderCommand)
         {
-            return Order.NewBuilder()
+            return Order.NewBuilder(null)
                 .SetCustomerId(new CustomerId(createOrderCommand.CustomerId))
                 .SetRestaurantId(new (createOrderCommand.RestaurantId))
                 .SetDeliveryAddress(OrderAddressToStreetAddress(createOrderCommand.Address))
@@ -49,7 +49,7 @@ namespace Rosered11.OrderService.Domain.Mapper
             List<DTO.Create.OrderItem> orderItems)
         {
             return orderItems.Select(x => 
-                Entities.OrderItem.NewBuilder()
+                Entities.OrderItem.NewBuilder(null)
                     .SetProduct(new Product(new ProductId(x.ProductId)))
                     .SetPrice(new Money(x.Price))
                     .SetQuantity(x.Quantity)

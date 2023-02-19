@@ -6,7 +6,6 @@ namespace Rosered11.OrderService.DataAccess.Entity
     public class OrderAddressEntity
     {
         public Guid Id { get; set; }
-        [Required]
         public required string Street { get; set; }
         public required string PostalCode { get; set; }
         public required string City { get; set; }

@@ -7,6 +7,7 @@ namespace Rosered11.OrderService.Domain.Entities
 {
     public class Order : AggregateRoot<OrderId>
     {
+        public const string FAILURE_MESSAGE_DELIMITER = ",";
         private readonly CustomerId? _customerId;
         private readonly RestaurantId? _restaurantId;
         private readonly StreetAddress? _deliveryAddress;
@@ -112,9 +113,8 @@ namespace Rosered11.OrderService.Domain.Entities
             }
         }
 
-        private Order(Builder builder)
+        private Order(Builder builder) : base(builder.OrderId)
         {
-            base.Id = builder.OrderId;
             _customerId = builder.CustomerId;
             _restaurantId = builder.RestaurantId;
             _deliveryAddress = builder.DeliveryAddress;
@@ -125,9 +125,9 @@ namespace Rosered11.OrderService.Domain.Entities
             _failureMessage = builder.FailureMessage;
         }
 
-        public static Builder NewBuilder()
+        public static Builder NewBuilder(OrderId id)
         {
-            return new Builder();
+            return new Builder(id);
         }
 
         public CustomerId? CustomerId => _customerId;
@@ -138,7 +138,7 @@ namespace Rosered11.OrderService.Domain.Entities
 
         public Money? Price => _price;
 
-        public List<OrderItem>? Items => _items;
+        public List<OrderItem> Items => _items;
 
         public TrackingId? TrackingId { get => _trackingId; }
         public OrderStatus OrderStatus { get => _orderStatus; }
@@ -146,7 +146,8 @@ namespace Rosered11.OrderService.Domain.Entities
 
         public sealed class Builder
         {
-            public OrderId? OrderId { get; private set; }
+            public OrderId OrderId { get; private set; }
+            public Builder(OrderId id) => OrderId = id;
             public CustomerId? CustomerId { get; private set; }
             public RestaurantId? RestaurantId { get; private set; }
             public StreetAddress? DeliveryAddress { get; private set; }

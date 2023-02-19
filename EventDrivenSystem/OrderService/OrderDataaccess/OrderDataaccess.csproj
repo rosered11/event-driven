@@ -2,6 +2,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\CommonDomain\CommonDomain.csproj" />
+    <ProjectReference Include="..\OrderDomain\OrderDomainCore\OrderDomainCore.csproj" />
+    <ProjectReference Include="..\OrderDomain\OrderApplicationService\OrderApplicationService.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -9,5 +11,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
+  </ItemGroup>
 
 </Project>

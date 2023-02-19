@@ -2,12 +2,14 @@ namespace Common.CommonDomain.Entities
 {
     public abstract class BaseEntity<ID>
     {
-        private ID? _id;
-        public ID? Id
+        private ID _id;
+        public ID Id
         {
             get { return _id; }
             set { _id = value; }
         }
+
+        public BaseEntity(ID id) => _id = id;
         
         public override bool Equals(object? obj)
         {

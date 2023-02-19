@@ -11,9 +11,9 @@ namespace Rosered11.OrderService.Domain
     {
         private readonly ILogger<OrderTrackCommandHandler> _logger;
         private readonly OrderDataMapper _orderDataMapper;
-        private readonly OrderRepository _orderRepository;
+        private readonly IOrderRepository _orderRepository;
 
-        public OrderTrackCommandHandler(ILogger<OrderTrackCommandHandler> logger, OrderDataMapper orderDataMapper, OrderRepository orderRepository)
+        public OrderTrackCommandHandler(ILogger<OrderTrackCommandHandler> logger, OrderDataMapper orderDataMapper, IOrderRepository orderRepository)
         {
             _logger = logger;
             _orderDataMapper = orderDataMapper;

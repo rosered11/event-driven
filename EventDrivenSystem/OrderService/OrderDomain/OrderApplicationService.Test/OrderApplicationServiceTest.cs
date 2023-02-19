@@ -95,8 +95,7 @@ namespace Rosered11.OrderService.Domain.Test
                     })
                 .Build();
 
-            Customer customer = new ();
-            customer.Id = new CustomerId(CUSTOMER_ID);
+            Customer customer = new (new CustomerId(CUSTOMER_ID));
 
             Restaurant restaurantResponse = Restaurant.NewBuilder()
                     .SetRestaurantId(new RestaurantId(_createOrderCommand.RestaurantId))

@@ -12,12 +12,12 @@ namespace Rosered11.OrderService.Domain
     {
         private readonly ILogger<OrderCreateHelper> _logger;
         private readonly IOrderDomainService _orderDomainService;
-        private readonly OrderRepository _orderRepository;
-        private readonly CustomerRepository _customerRepository;
-        private readonly RestaurantRepository _restaurantRepository;
+        private readonly IOrderRepository _orderRepository;
+        private readonly ICustomerRepository _customerRepository;
+        private readonly IRestaurantRepository _restaurantRepository;
         private readonly OrderDataMapper _orderDataMapper;
 
-        public OrderCreateHelper(ILogger<OrderCreateHelper> logger, IOrderDomainService orderDomainService, OrderRepository orderRepository, CustomerRepository customerRepository, RestaurantRepository restaurantRepository, OrderDataMapper orderDataMapper)
+        public OrderCreateHelper(ILogger<OrderCreateHelper> logger, IOrderDomainService orderDomainService, IOrderRepository orderRepository, ICustomerRepository customerRepository, IRestaurantRepository restaurantRepository, OrderDataMapper orderDataMapper)
         {
             _logger = logger;
             _orderDomainService = orderDomainService;

@@ -5,9 +5,9 @@ namespace Rosered11.OrderService.Domain.Test
         public Mock<OrderCreatedPaymentRequestMessagePublisher> OrderCreatedPaymentRequestMessagePublisher { get; private set; }
         public Mock<OrderCancelledPaymentRequestMessagePublisher> OrderCancelledPaymentRequestMessagePublisher { get; private set; }
         public Mock<OrderPaidRestaurantRequestMessagePublisher> OrderPaidRestaurantRequestMessagePublisher { get; private set; }
-        public Mock<OrderRepository> OrderRepository { get; private set; }
-        public Mock<CustomerRepository> CustomerRepository { get; private set; }
-        public Mock<RestaurantRepository> RestaurantRepository { get; private set; }
+        public Mock<IOrderRepository> OrderRepository { get; private set; }
+        public Mock<ICustomerRepository> CustomerRepository { get; private set; }
+        public Mock<IRestaurantRepository> RestaurantRepository { get; private set; }
         public IOrderDomainService OrderDomainService { get; private set; }
         public OrderCreateHelper OrderCreateHelper { get; private set; }
         public OrderDataMapper OrderDataMapper { get; } = new();
@@ -37,9 +37,9 @@ namespace Rosered11.OrderService.Domain.Test
             serviceCollection.AddScoped<OrderCreatedPaymentRequestMessagePublisher>(x => OrderCreatedPaymentRequestMessagePublisher.Object);
             serviceCollection.AddScoped<OrderCancelledPaymentRequestMessagePublisher>(x => OrderCancelledPaymentRequestMessagePublisher.Object);
             serviceCollection.AddScoped<OrderPaidRestaurantRequestMessagePublisher>(x => OrderPaidRestaurantRequestMessagePublisher.Object);
-            serviceCollection.AddScoped<OrderRepository>(x => OrderRepository.Object);
-            serviceCollection.AddScoped<CustomerRepository>(x => CustomerRepository.Object);
-            serviceCollection.AddScoped<RestaurantRepository>(x => RestaurantRepository.Object);
+            serviceCollection.AddScoped<IOrderRepository>(x => OrderRepository.Object);
+            serviceCollection.AddScoped<ICustomerRepository>(x => CustomerRepository.Object);
+            serviceCollection.AddScoped<IRestaurantRepository>(x => RestaurantRepository.Object);
             serviceCollection.AddScoped<IOrderDomainService, OrderDomainService>();
             serviceCollection.AddScoped<OrderCreateHelper>(x => OrderCreateHelper);
             serviceCollection.AddScoped<OrderDataMapper>(x => OrderDataMapper);
@@ -67,17 +67,17 @@ namespace Rosered11.OrderService.Domain.Test
         }
         private void InitOrderRepository()
         {
-            Mock<OrderRepository> mock = new();
+            Mock<IOrderRepository> mock = new();
             OrderRepository = mock;
         }
         private void InitCustomerRepository()
         {
-            Mock<CustomerRepository> mock = new();
+            Mock<ICustomerRepository> mock = new();
             CustomerRepository = mock;
         }
         private void InitRestaurantRepository()
         {
-            Mock<RestaurantRepository> mock = new();
+            Mock<IRestaurantRepository> mock = new();
             RestaurantRepository = mock;
         }
         private void InitOrderDomainService()

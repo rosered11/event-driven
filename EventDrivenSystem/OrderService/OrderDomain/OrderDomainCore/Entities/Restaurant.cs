@@ -11,9 +11,8 @@ namespace Rosered11.OrderService.Domain.Entities
         public List<Product>? Products => _products;
 
         public bool IsActive { get => _active; }
-        private Restaurant(Builder builder)
+        private Restaurant(Builder builder) : base(builder.RestaurantId)
         {
-            base.Id = builder.RestaurantId;
             _products = builder.Products;
             _active = builder.Active;
         }
@@ -25,7 +24,7 @@ namespace Rosered11.OrderService.Domain.Entities
 
         public sealed class Builder
         {
-            public RestaurantId? RestaurantId { get; private set; }
+            public RestaurantId RestaurantId { get; private set; }
             public List<Product>? Products { get; private set; }
             public bool Active { get; private set; }
 

@@ -8,13 +8,11 @@ namespace Rosered11.OrderService.Domain.Entities
         private string? name;
         private Money? price;
 
-        public Product(ProductId productId)
+        public Product(ProductId productId) : base(productId)
         {
-            base.Id = productId;
         }
-        public Product(ProductId productId, string name, Money price)
+        public Product(ProductId productId, string name, Money price) : base(productId)
         {
-            base.Id = productId;
             this.name = name;
             this.price = price;
         }

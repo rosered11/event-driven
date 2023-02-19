@@ -12,7 +12,7 @@ namespace Rosered11.OrderService.Domain.Entities
         private readonly Money? _price;
         private readonly Money? _subTotal;
 
-        public void InitializeOrderItem(OrderId? orderId, OrderItemId? orderItemId)
+        public void InitializeOrderItem(OrderId? orderId, OrderItemId orderItemId)
         {
             _orderId = orderId;
             base.Id = orderItemId;
@@ -23,18 +23,17 @@ namespace Rosered11.OrderService.Domain.Entities
                 return _price.IsGreaterThanZero() && _price.Equals(_product.GetPrice()) && (_price * _quantity).Equals(_subTotal);
             return false;
         }
-        private OrderItem(Builder builder)
+        private OrderItem(Builder builder) : base(builder.OrderItemId)
         {
-            base.Id = builder.OrderItemId;
             _product = builder.Product;
             _quantity = builder.Quantity;
             _price = builder.Price;
             _subTotal = builder.SubTotal;
         }
 
-        public static Builder NewBuilder()
+        public static Builder NewBuilder(OrderItemId id)
         {
-            return new Builder();
+            return new Builder(id);
         }
 
         public OrderId? OrderId => this._orderId;
@@ -45,7 +44,8 @@ namespace Rosered11.OrderService.Domain.Entities
 
         public sealed class Builder
         {
-            public OrderItemId? OrderItemId { get; private set;}
+            public OrderItemId OrderItemId { get; private set;}
+            public Builder(OrderItemId id) => OrderItemId = id;
             public Product? Product { get; private set;}
             public int Quantity { get; private set;}
             public Money? Price { get; private set;}

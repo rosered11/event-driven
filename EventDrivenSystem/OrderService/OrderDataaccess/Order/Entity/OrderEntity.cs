@@ -1,11 +1,17 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Common.CommonDomain.ValueObject;
+using Rosered11.OrderService.Common.DataAccess;
 
 namespace Rosered11.OrderService.DataAccess.Entity
 {
-    public class OrderEntity
+    public class OrderEntity : BaseEntity<Guid>
     {
-        public Guid Id { get; set; }
+        public OrderEntity(Guid id, List<OrderItemEntity> items, OrderAddressEntity address) : base(id)
+        {
+            Items = items;
+            Address = address;
+        }
+
         public Guid CustomerId { get; set; }
         public Guid RestaurantId { get; set; }
         public Guid TrackingId { get; set; }
@@ -14,8 +20,8 @@ namespace Rosered11.OrderService.DataAccess.Entity
         public string? FailureMessage { get; set; }
 
         [InverseProperty("Order")]
-        public required OrderAddressEntity Address { get; set; }
-        public required List<OrderItemEntity> Items { get; set; }
+        public OrderAddressEntity Address { get; set; }
+        public List<OrderItemEntity> Items { get; set; }
 
         public override bool Equals(object? obj)
         {

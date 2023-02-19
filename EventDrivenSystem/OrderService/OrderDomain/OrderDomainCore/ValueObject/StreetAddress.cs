@@ -14,6 +14,15 @@ namespace Rosered11.OrderService.Domain.ValueObject
             this.postalCode = postalCode;
             this.city = city;
         }
+
+        public Guid Id => id;
+
+        public string Street => street;
+
+        public string PostalCode => postalCode;
+
+        public string City => city;
+
         // override object.Equals
         public override bool Equals(object? obj)
         {
@@ -31,7 +40,7 @@ namespace Rosered11.OrderService.Domain.ValueObject
             
             StreetAddress that = (StreetAddress)obj;
             
-            return street == that.street && postalCode == that.postalCode && city == that.city;
+            return Street == that.Street && PostalCode == that.PostalCode && City == that.City;
         }
         
         // override object.GetHashCode
@@ -39,7 +48,7 @@ namespace Rosered11.OrderService.Domain.ValueObject
         {
             // TODO: write your implementation of GetHashCode() here
             // throw new System.NotImplementedException();
-            return Tuple.Create(street, postalCode, city).GetHashCode();//base.GetHashCode();
+            return Tuple.Create(Street, PostalCode, City).GetHashCode();//base.GetHashCode();
         }
     }
 }
