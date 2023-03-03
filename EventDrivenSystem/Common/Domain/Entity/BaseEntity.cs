@@ -6,6 +6,7 @@ namespace Rosered11.Common.Domain.Entity
         public BaseEntity(T id){
             ID = id;
         }
+        public void SetId(T id) => ID = id;
         public override bool Equals(object? obj)
         {
             if (ID == null || obj == null || GetType() != obj.GetType())

@@ -9,6 +9,10 @@ namespace Rosered11.Order.Domain.Core;
 public class OrderDomainService
 {
     private readonly ILogger<OrderDomainService> _logger;
+    public OrderDomainService(ILogger<OrderDomainService> logger)
+    {
+        _logger = logger;
+    }
     public OrderCreatedEvent validateAndInitiateOrder(Domain.Core.Entity.Order order, Restaurant restaurant) {
         validateRestaurant(restaurant);
         setOrderProductInformation(order, restaurant);

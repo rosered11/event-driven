@@ -9,7 +9,7 @@ namespace Rosered11.Order.Domain.Core.Entity
     {
         public const string FAILURE_MESSAGE_DELIMITER = ",";
 
-        public Order() : base(new OrderId(Guid.NewGuid()))
+        public Order() : base(default)
         {
         }
         public Order(Guid id) : base(new OrderId(id))
@@ -26,6 +26,7 @@ namespace Rosered11.Order.Domain.Core.Entity
         public List<string> FailureMessages { get; set; } = new();
 
         public void initializeOrder() {
+            SetId(new OrderId(Guid.NewGuid()));
             TrackingId = new TrackingId(Guid.NewGuid());
             OrderStatus = OrderStatus.PENDING;
             initializeOrderItems();
